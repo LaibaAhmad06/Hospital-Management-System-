@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patient Registration - HMS</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #3498db;
+            --accent-color: #e74c3c;
+            --light-color: #ecf0f1;
+            --dark-color: #2c3e50;
+            --success-color: #27ae60;
+            --warning-color: #f39c12;
+            --border-radius: 8px;
+            --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 1rem 2rem;
+            box-shadow: var(--box-shadow);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border-radius: var(--border-radius);
+            transition: background-color 0.3s;
+            font-weight: 500;
+        }
+
+        nav a:hover, nav a.active {
+            background-color: var(--secondary-color);
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 2rem;
+            background-color: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+        }
+
+        h2, h3 {
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        h3 {
+            font-size: 1.5rem;
+            text-align: left;
+            margin-top: 1.5rem;
+            border-bottom: 2px solid var(--light-color);
+            padding-bottom: 0.5rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--dark-color);
+            font-weight: 600;
+        }
+
+        .form-group input[type="text"],
+        .form-group input[type="email"],
+        .form-group input[type="date"],
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #ccc;
+            border-radius: var(--border-radius);
+            font-size: 1rem;
+            color: #555;
+        }
+
+        .form-group select {
+            appearance: none;
+            background-image: url('data:image/svg+xml;charset=UTF-8,<svg fill="%23555" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>');
+            background-repeat: no-repeat;
+            background-position: right 0.75rem center;
+            background-size: 1em;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+        }
+
+        button[type="submit"],
+        button[type="reset"] {
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: var(--border-radius);
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            margin-top: 1rem;
+        }
+
+        button[type="submit"] {
+            background-color: var(--success-color);
+            color: white;
+            margin-right: 1rem;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #1e8449;
+        }
+
+        button[type="reset"].button-secondary {
+            background-color: var(--light-color);
+            color: var(--dark-color);
+        }
+
+        button[type="reset"].button-secondary:hover {
+            background-color: #ddd;
+        }
+
+        #registration-message {
+            margin-top: 20px;
+            font-weight: bold;
+            color: var(--success-color);
+        }
+
+        footer {
+            background-color: var(--dark-color);
+            color: white;
+            text-align: center;
+            padding: 1.5rem;
+            margin-top: 3rem;
+        }
+
+        footer p {
+            margin-bottom: 0.5rem;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="header-container">
+            <h1><i class="fas fa-user-plus"></i> HMS - Patient Services</h1>
+            <nav>
+                <ul>
+                    <li><a href="dashboard_admin.html"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
+                    <li><a href="patient_registration.html" class="active"><i class="fas fa-user-plus"></i> Register Patient</a></li>
+                    <li><a href="login.html"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <h2>New Patient Registration</h2>
+
+        <form id="registrationForm" action="#" method="POST">
+            <h3>Personal Information</h3>
+            <div class="form-group">
+                <label for="first-name">First Name</label>
+                <input type="text" id="first-name" name="first_name" required>
+            </div>
+            <div class="form-group">
+                <label for="last-name">Last Name</label>
+                <input type="text" id="last-name" name="last_name" required>
+            </div>
+            <div class="form-group">
+                <label for="dob">Date of Birth</label>
+                <input type="date" id="dob" name="dob" required>
+            </div>
+            <div class="form-group">
+                <label for="gender">Gender</label>
+                <select id="gender" name="gender">
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                    <option value="other">Other</option>
+                </select>
+            </div>
+
+            <h3>Contact Information</h3>
+            <div class="form-group">
+                <label for="email">Email Address</label>
+                <input type="email" id="email" name="email">
+            </div>
+            <div class="form-group">
+                <label for="phone">Phone Number</label>
+                <input type="text" id="phone" name="phone" required>
+            </div>
+            <div class="form-group">
+                <label for="address">Address</label>
+                <textarea id="address" name="address" rows="3"></textarea>
+            </div>
+
+            <h3>Medical Information (Optional Basic)</h3>
+            <div class="form-group">
+                <label for="blood-group">Blood Group</label>
+                <input type="text" id="blood-group" name="blood_group">
+            </div>
+            <div class="form-group">
+                <label for="allergies">Known Allergies</label>
+                <textarea id="allergies" name="allergies" rows="2"></textarea>
+            </div>
+
+            <button type="submit">Register Patient</button>
+            <button type="reset" class="button-secondary">Clear Form</button>
+
+            <div id="registration-message" style="margin-top: 20px; font-weight: bold;"></div>
+        </form>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Hospital Management System. Lahore, Punjab, Pakistan.</p>
+    </footer>
+
+    <script>
+        const form = document.getElementById('registrationForm');
+        const registrationMessage = document.getElementById('registration-message');
+
+        form.addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent actual form submission for this example
+
+            // Simulate successful registration (in a real app, you'd send data to the backend)
+            console.log('Patient data submitted (simulated):', new FormData(form));
+
+            // Display success message
+            registrationMessage.textContent = 'Patient registered successfully!';
+            registrationMessage.style.color = 'var(--success-color)';
+
+            // In a real application, you would likely redirect the user or update UI dynamically.
+            // For this frontend example, we'll just show the message.
+
+            // --- Updating Patient Count on Admin Dashboard (Conceptual) ---
+            // To update the patient count on the admin dashboard, you would typically:
+            // 1. Have a way to uniquely identify the patient count element on the admin dashboard (e.g., an ID like 'total-patients-count').
+            // 2. After a successful registration (handled by the backend), the backend might:
+            //    - Redirect the admin back to the dashboard, where the count is re-fetched and updated.
+            //    - Use технологии like WebSockets to push a real-time update to the admin dashboard.
+            // 3. If you want to do it purely on the frontend (less realistic without backend interaction in this context):
+            //    - You would need to store the current patient count in the browser's local storage or session storage.
+            //    - Retrieve it on the registration page.
+            //    - Increment it after "registration."
+            //    - Update the element on the admin dashboard (which would need to be loaded in the same session or you'd redirect).
+
+            // For this example, I'll just log a message about the conceptual update:
+            console.log('Conceptual: Patient count on Admin Dashboard should increase.');
+
+            // Optionally, clear the form after successful registration
+            form.reset();
+        });
+
+        // Example: Simple client-side validation (as before)
+        const firstNameInput = document.getElementById('first-name');
+        firstNameInput.addEventListener('blur', function() {
+            if (!this.value.trim()) {
+                alert('First Name is required!');
+                this.focus();
+            }
+        });
+        // Add more validation as needed for other fields.
+    </script>
+
+</body>
+</html>

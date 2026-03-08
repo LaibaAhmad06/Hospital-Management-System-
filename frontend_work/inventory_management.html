@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Hospital Inventory</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #3498db;
+            --accent-color: #e74c3c;
+            --light-color: #ecf0f1;
+            --dark-color: #2c3e50;
+            --success-color: #27ae60;
+            --warning-color: #f39c12;
+            --border-radius: 8px;
+            --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 1rem 2rem;
+            box-shadow: var(--box-shadow);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border-radius: var(--border-radius);
+            transition: background-color 0.3s;
+            font-weight: 500;
+        }
+
+        nav a:hover, nav a.active {
+            background-color: var(--secondary-color);
+        }
+
+        .container {
+            max-width: 960px;
+            margin: 2rem auto;
+            padding: 2rem;
+            background-color: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+        }
+
+        h1, h3 {
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .inventory-actions {
+            margin-bottom: 1.5rem;
+            text-align: right;
+        }
+
+        .inventory-actions button {
+            padding: 0.75rem 1.5rem;
+            background-color: var(--secondary-color);
+            color: white;
+            border: none;
+            border-radius: var(--border-radius);
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .inventory-actions button:hover {
+            background-color: #2980b9;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 2rem;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        }
+
+        thead th {
+            background-color: var(--light-color);
+            color: var(--dark-color);
+            padding: 1rem;
+            text-align: left;
+            font-weight: bold;
+        }
+
+        tbody td {
+            padding: 1rem;
+            border-bottom: 1px solid var(--light-color);
+        }
+
+        tbody tr:last-child td {
+            border-bottom: none;
+        }
+
+        tbody tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        tbody td a {
+            color: var(--secondary-color);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        tbody td a:hover {
+            color: #2980b9;
+        }
+
+        .add-item-form {
+            background-color: var(--light-color);
+            border-radius: var(--border-radius);
+            padding: 1.5rem;
+            margin-top: 2rem;
+            display: none; /* Initially hidden */
+        }
+
+        .add-item-form h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            text-align: left;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--dark-color);
+            font-weight: 600;
+        }
+
+        .form-group input[type="text"],
+        .form-group input[type="number"],
+        .form-group select {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #ccc;
+            border-radius: var(--border-radius);
+            font-size: 1rem;
+            color: #555;
+        }
+
+        .form-group select {
+            appearance: none;
+            background-image: url('data:image/svg+xml;charset=UTF-8,<svg fill="%23555" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>');
+            background-repeat: no-repeat;
+            background-position: right 0.75rem center;
+            background-size: 1em;
+        }
+
+        .add-item-form button[type="submit"],
+        .add-item-form button[type="button"].button-secondary {
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: var(--border-radius);
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .add-item-form button[type="submit"] {
+            background-color: var(--success-color);
+            color: white;
+            margin-right: 1rem;
+        }
+
+        .add-item-form button[type="submit"]:hover {
+            background-color: #1e8449;
+        }
+
+        .add-item-form button[type="button"].button-secondary {
+            background-color: var(--light-color);
+            color: var(--dark-color);
+        }
+
+        .add-item-form button[type="button"].button-secondary:hover {
+            background-color: #ddd;
+        }
+
+        footer {
+            background-color: var(--dark-color);
+            color: white;
+            text-align: center;
+            padding: 1.5rem;
+            margin-top: 3rem;
+        }
+
+        footer p {
+            margin-bottom: 0.5rem;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 1.5rem;
+            }
+
+            table {
+                overflow-x: auto;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="header-container">
+            <h1><i class="fas fa-boxes"></i> HMS - Inventory Management</h1>
+            <nav>
+                <ul>
+                    <li><a href="dashboard_admin.html"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
+                    <li><a href="inventory_management.html"><i class="fas fa-cubes"></i> Inventory</a></li>
+                    <li><a href="reports_analytics.html"><i class="fas fa-file-alt"></i> Reports</a></li>
+                    <li><a href="login.html"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <h1>Hospital Inventory</h1>
+
+        <div class="inventory-actions">
+            <button type="button">Add New Item</button>
+        </div>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Item Code</th>
+                    <th>Item Name</th>
+                    <th>Category</th>
+                    <th>Quantity</th>
+                    <th>Unit Price</th>
+                    <th>Reorder Level</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>SUP-005</td>
+                    <td>Surgical Gloves (Box of 100)</td>
+                    <td>Supplies</td>
+                    <td>250</td>
+                    <td>350</td>
+                    <td>50</td>
+                    <td><a href="#">Edit</a> | <a href="#">Restock</a></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="add-item-form">
+            <h3>Add New Inventory Item</h3>
+            <form action="#" method="POST">
+                <div class="form-group">
+                    <label for="item-name">Item Name</label>
+                    <input type="text" id="item-name" name="item_name" required>
+                </div>
+                <div class="form-group">
+                    <label for="category">Category</label>
+                    <select id="category" name="category" required>
+                        <option value="">Select Category</option>
+                        <option value="medications">Medications</option>
+                        <option value="supplies">Supplies</option>
+                        <option value="equipment">Equipment</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="quantity">Quantity</label>
+                    <input type="number" id="quantity" name="quantity" required>
+                </div>
+                <div class="form-group">
+                    <label for="unit-price">Unit Price (PKR)</label>
+                    <input type="number" id="unit-price" name="unit_price" required>
+                </div>
+                <div class="form-group">
+                    <label for="reorder-level">Reorder Level</label>
+                    <input type="number" id="reorder-level" name="reorder_level">
+                </div>
+                <button type="submit">Add Item</button>
+                <button type="button" class="button-secondary" onclick="this.closest('.add-item-form').style.display='none';">Cancel</button>
+            </form>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Hospital Management System. Lahore, Punjab, Pakistan.</p>
+    </footer>
+
+    <script>
+        const addItemButton = document.querySelector('.inventory-actions button');
+        const addItemForm = document.querySelector('.add-item-form');
+
+        addItemButton.addEventListener('click', function () {
+            addItemForm.style.display = 'block';
+        });
+    </script>
+
+</body>
+</html>

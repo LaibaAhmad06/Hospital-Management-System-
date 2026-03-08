@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consultation - HMS</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #3498db;
+            --accent-color: #e74c3c;
+            --light-color: #ecf0f1;
+            --dark-color: #2c3e50;
+            --success-color: #27ae60;
+            --warning-color: #f39c12;
+            --border-radius: 8px;
+            --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 1rem 2rem;
+            box-shadow: var(--box-shadow);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border-radius: var(--border-radius);
+            transition: background-color 0.3s;
+            font-weight: 500;
+        }
+
+        nav a:hover, nav a.active {
+            background-color: var(--secondary-color);
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 2rem;
+            background-color: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+        }
+
+        h2 {
+            color: var(--primary-color);
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .consultation-details,
+        .consultation-notes,
+        .prescription-section,
+        .actions {
+            background-color: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .consultation-details h3,
+        .consultation-notes h3,
+        .prescription-section h3 {
+            color: var(--secondary-color);
+            margin-bottom: 1rem;
+            border-bottom: 2px solid var(--light-color);
+            padding-bottom: 0.5rem;
+        }
+
+        .consultation-details p {
+            color: #555;
+            margin-bottom: 0.75rem;
+        }
+
+        .consultation-details strong {
+            color: var(--dark-color);
+            font-weight: bold;
+        }
+
+        .consultation-notes textarea,
+        .prescription-section textarea {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid var(--light-color);
+            border-radius: var(--border-radius);
+            font-size: 1rem;
+            color: #555;
+            margin-bottom: 1rem;
+            resize: vertical;
+        }
+
+        .consultation-notes button[type="button"],
+        .prescription-section button[type="button"],
+        .actions button[type="button"] {
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: var(--border-radius);
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .consultation-notes button[type="button"],
+        .prescription-section button[type="button"] {
+            background-color: var(--secondary-color);
+            color: white;
+        }
+
+        .consultation-notes button[type="button"]:hover,
+        .prescription-section button[type="button"]:hover {
+            background-color: #2980b9;
+        }
+
+        .actions {
+            text-align: right;
+        }
+
+        .actions button[type="button"].button-secondary {
+            background-color: var(--light-color);
+            color: var(--dark-color);
+        }
+
+        .actions button[type="button"].button-secondary:hover {
+            background-color: #ddd;
+        }
+
+        footer {
+            background-color: var(--dark-color);
+            color: white;
+            text-align: center;
+            padding: 1.5rem;
+            margin-top: 3rem;
+        }
+
+        footer p {
+            margin-bottom: 0.5rem;
+        }
+
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            nav ul {
+                flex-direction: column;
+                margin-top: 1rem;
+            }
+
+            nav a {
+                display: block;
+                padding: 0.5rem;
+            }
+
+            .container {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="header-container">
+            <h1><i class="fas fa-stethoscope"></i> HMS - Doctor Portal</h1>
+            <nav>
+                <ul>
+                    <li><a href="dashboard_doctor.html"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
+                    <li><a href="doctor_profile.html"><i class="fas fa-user"></i> My Profile</a></li>
+                    <li><a href="appointment_booking.html"><i class="fas fa-calendar-alt"></i> Appointments</a></li>
+                    <li><a href="consultation.html" class="active"><i class="fas fa-video"></i> Consultations</a></li>
+                    <li><a href="login.html"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <h2>Upcoming Consultation</h2>
+
+        <div class="consultation-details">
+            <h3>Patient Information</h3>
+            <p><strong>Name:</strong> John Smith</p>
+            <p><strong>Patient ID:</strong> PS12345</p>
+            <p><strong>Date:</strong> April 25, 2025</p>
+            <p><strong>Time:</strong> 10:00 AM</p>
+            <p><strong>Reason:</strong> Follow-up checkup</p>
+        </div>
+
+        <div class="consultation-notes">
+            <h3>Consultation Notes</h3>
+            <textarea rows="10" placeholder="Enter consultation notes here..."></textarea>
+            <button type="button">Save Notes</button>
+        </div>
+
+        <div class="prescription-section">
+            <h3>Prescription</h3>
+            <textarea rows="5" placeholder="Enter prescription details..."></textarea>
+            <button type="button">Save Prescription</button>
+        </div>
+
+        <div class="actions">
+            <button type="button" class="button-secondary">Mark as Complete</button>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Hospital Management System. Lahore, Punjab, Pakistan.</p>
+    </footer>
+
+</body>
+</html>

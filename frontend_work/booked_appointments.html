@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Booked Appointments</title>
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #3498db;
+            --accent-color: #e74c3c;
+            --light-color: #ecf0f1;
+            --dark-color: #2c3e50;
+            --border-radius: 8px;
+            --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+            padding: 20px;
+        }
+
+        .appointments-container {
+            background-color: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        .appointment-item {
+            border-bottom: 1px solid var(--light-color);
+            padding: 15px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .appointment-item:last-child {
+            border-bottom: none;
+        }
+
+        .appointment-details {
+            flex-grow: 1;
+        }
+
+        .appointment-details p {
+            margin-bottom: 5px;
+        }
+
+        .appointment-actions button {
+            padding: 8px 12px;
+            border: none;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: background-color 0.3s;
+            margin-left: 10px;
+        }
+
+        .appointment-actions button.cancel {
+            background-color: var(--accent-color);
+            color: white;
+        }
+
+        .appointment-actions button.cancel:hover {
+            background-color: #c0392b;
+        }
+
+        .appointment-actions button.reschedule {
+            background-color: var(--warning-color);
+            color: white;
+        }
+
+        .appointment-actions button.reschedule:hover {
+            background-color: #d35400;
+        }
+
+        h2 {
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="appointments-container">
+        <h2>Upcoming Appointments</h2>
+        <div class="appointment-item">
+            <div class="appointment-details">
+                <p><strong>Patient:</strong> Aisha Khan</p>
+                <p><strong>Date:</strong> April 26, 2025</p>
+                <p><strong>Time:</strong> 11:00 AM</p>
+                <p><strong>Doctor:</strong> Dr. Imran Ali</p>
+                <p><strong>Type:</strong> General Checkup</p>
+                <p><strong>Status:</strong> Scheduled</p>
+            </div>
+            <div class="appointment-actions">
+                <button class="cancel">Cancel</button>
+                <button class="reschedule">Reschedule</button>
+            </div>
+        </div>
+
+        <div class="appointment-item">
+            <div class="appointment-details">
+                <p><strong>Patient:</strong> Muhammad Rizwan</p>
+                <p><strong>Date:</strong> April 28, 2025</p>
+                <p><strong>Time:</strong> 02:30 PM</p>
+                <p><strong>Doctor:</strong> Dr. Fatima Khan</p>
+                <p><strong>Type:</strong> Follow-up</p>
+                <p><strong>Status:</strong> Scheduled</p>
+            </div>
+            <div class="appointment-actions">
+                <button class="cancel">Cancel</button>
+                <button class="reschedule">Reschedule</button>
+            </div>
+        </div>
+
+        </div>
+
+</body>
+</html>

@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Billing & Payment - HMS</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #3498db;
+            --accent-color: #e74c3c;
+            --light-color: #ecf0f1;
+            --dark-color: #2c3e50;
+            --success-color: #27ae60;
+            --warning-color: #f39c12;
+            --border-radius: 8px;
+            --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 1rem 2rem;
+            box-shadow: var(--box-shadow);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border-radius: var(--border-radius);
+            transition: background-color 0.3s;
+            font-weight: 500;
+        }
+
+        nav a:hover, nav a.active {
+            background-color: var(--secondary-color);
+        }
+
+        .container {
+            max-width: 960px;
+            margin: 2rem auto;
+            padding: 2rem;
+            background-color: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+        }
+
+        h2 {
+            color: var(--primary-color);
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 2rem;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        }
+
+        thead th {
+            background-color: var(--light-color);
+            color: var(--dark-color);
+            padding: 1rem;
+            text-align: left;
+            font-weight: bold;
+        }
+
+        tbody td {
+            padding: 1rem;
+            border-bottom: 1px solid var(--light-color);
+        }
+
+        tbody tr:last-child td {
+            border-bottom: none;
+        }
+
+        tbody tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        tbody td a {
+            color: var(--secondary-color);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        tbody td a:hover {
+            color: #2980b9;
+        }
+
+        .payment-section {
+            margin-top: 2rem;
+            padding: 1.5rem;
+            background-color: var(--light-color);
+            border-radius: var(--border-radius);
+        }
+
+        .payment-section h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .payment-section p {
+            color: #555;
+            margin-bottom: 1rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--dark-color);
+            font-weight: 600;
+        }
+
+        .form-group input[type="text"],
+        .form-group input[type="number"],
+        .form-group select {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #ccc;
+            border-radius: var(--border-radius);
+            font-size: 1rem;
+            color: #555;
+        }
+
+        .form-group select {
+            appearance: none;
+            background-image: url('data:image/svg+xml;charset=UTF-8,<svg fill="%23555" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>');
+            background-repeat: no-repeat;
+            background-position: right 0.75rem center;
+            background-size: 1em;
+        }
+
+        .payment-section button[type="submit"] {
+            padding: 0.75rem 1.5rem;
+            background-color: var(--success-color);
+            color: white;
+            border: none;
+            border-radius: var(--border-radius);
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .payment-section button[type="submit"]:hover {
+            background-color: #1e8449;
+        }
+
+        footer {
+            background-color: var(--dark-color);
+            color: white;
+            text-align: center;
+            padding: 1.5rem;
+            margin-top: 3rem;
+        }
+
+        footer p {
+            margin-bottom: 0.5rem;
+        }
+
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            nav ul {
+                flex-direction: column;
+                margin-top: 1rem;
+            }
+
+            nav a {
+                display: block;
+                padding: 0.5rem;
+            }
+
+            .container {
+                padding: 1.5rem;
+            }
+
+            table {
+                overflow-x: auto;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="header-container">
+            <h1><i class="fas fa-receipt"></i> HMS - Patient Services</h1>
+            <nav>
+                <ul>
+                    <li><a href="dashboard_patient.html"><i class="fas fa-home"></i> Dashboard</a></li>
+                    <li><a href="appointment_booking.html"><i class="fas fa-calendar-check"></i> My Appointments</a></li>
+                    <li><a href="consultation.html"><i class="fas fa-video"></i> My Consultations</a></li>
+                    <li><a href="billing_payment.html" class="active"><i class="fas fa-money-bill-wave"></i> Billing & Payment</a></li>
+                    <li><a href="logout.html"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <h2>Billing & Payment History</h2>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Bill ID</th>
+                    <th>Date Issued</th>
+                    <th>Description</th>
+                    <th>Amount (PKR)</th>
+                    <th>Status</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>BILL-2025-001</td>
+                    <td>2025-04-15</td>
+                    <td>Consultation Fee - Dr. John Doe</td>
+                    <td>1500</td>
+                    <td>Paid</td>
+                    <td><a href="#">View Invoice</a></td>
+                </tr>
+                <tr>
+                    <td>BILL-2025-002</td>
+                    <td>2025-04-20</td>
+                    <td>Lab Tests</td>
+                    <td>2200</td>
+                    <td>Pending</td>
+                    <td><a href="#">Pay Now</a> | <a href="#">View Invoice</a></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="payment-section">
+            <h3>Make a New Payment</h3>
+            <p>Select a pending bill to pay or enter a payment amount.</p>
+            <form action="#" method="POST">
+                <div class="form-group">
+                    <label for="bill-id">Bill ID (Optional)</label>
+                    <input type="text" id="bill-id" name="bill_id" placeholder="Enter Bill ID to pay">
+                </div>
+                <div class="form-group">
+                    <label for="payment-amount">Payment Amount (PKR)</label>
+                    <input type="number" id="payment-amount" name="payment_amount" required>
+                </div>
+                <div class="form-group">
+                    <label for="payment-method">Payment Method</label>
+                    <select id="payment-method" name="payment_method" required>
+                        <option value="">Select Method</option>
+                        <option value="credit-card">Credit Card</option>
+                        <option value="debit-card">Debit Card</option>
+                        <option value="bank-transfer">Bank Transfer</option>
+                    </select>
+                </div>
+                <button type="submit">Proceed to Payment</button>
+            </form>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Hospital Management System. Lahore, Punjab, Pakistan.</p>
+    </footer>
+
+</body>
+</html>
